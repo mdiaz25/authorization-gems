@@ -1,6 +1,9 @@
 class PunditPostsController < ApplicationController
-  def index
+  include Pundit::Authorization
+  before_action :authenticate_user!
 
+  def index
+    @posts = policy_scope(Post)
   end
 
   def update
