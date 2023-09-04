@@ -1,3 +1,14 @@
-<% @posts.each do |post| %>
-  <%= post.title %>
-<% end %>
+<h1>Posts</h1>
+<%= link_to 'Create new post', new_cancancan_post_path %>
+<ul>
+  <% @posts.each do |post| %>
+      <li>
+        <h2><%= post.title %></h2>
+        <%= post.content %>
+        <% debugger %>
+        <%= form_with url: cancancan_post_path(post), method: :delete do |form| %>
+          <%= form.submit 'Destroy' %>
+        <% end %>
+      </li>
+  <% end %>
+</ul>

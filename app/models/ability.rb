@@ -18,6 +18,7 @@ class Ability
 
   def user_permissions(user)
     can :read, Post, :all
-    can :update, Post, user_id: user.id
+    can [:update, :destroy], Post, user_id: user.id
+    can :create, Post, user_id: user.id
   end
 end

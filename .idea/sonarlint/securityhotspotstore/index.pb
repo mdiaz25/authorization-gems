@@ -13,5 +13,3 @@ Q
 !app/views/layouts/mailer.text.erb,2/c/2c761add2e75b8929fac974ce0d883422cfbfac8
 <
 db/schema.rb,2/c/2cda0c6171fa7d04989507a1dd112e34c40df46d
-@
-config/routes.rb,e/8/e801163eb9182955dca3eb9817d59af634f6665d
