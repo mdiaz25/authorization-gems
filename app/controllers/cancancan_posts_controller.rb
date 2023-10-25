@@ -1,33 +1,26 @@
 class CancancanPostsController < ApplicationController
   load_and_authorize_resource class: Post, instance_name: :post, param_method: :post_params
+
   def index
-    @posts = @posts # no deberiamos de hacer nada aca porque es SSR
+    # @index
   end
 
   def create
     if @post.save
-      flash[:notice] = 'Successfully created'
       redirect_to cancancan_posts_path
     else
-      flash[:alert] = 'Error creating post'
       render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    if @post.update(posts_params)
-      flash[:notice] = 'Successfully updated'
-    else
-      flash[:alert] = 'Error updating post'
-    end
+    debugger
+    @post.update(post_params)
+    redirect_to cancancan_posts_path
   end
 
   def destroy
-    if @post.destroy
-      flash[:notice] = 'Successfully destroyed'
-    else
-      flash[:alert] = 'Error destroying post'
-    end
+    @post.destroy
 
     redirect_to cancancan_posts_path
   end
@@ -35,6 +28,6 @@ class CancancanPostsController < ApplicationController
   private
 
   def post_params
-    params.permit(:title, :content, :user_id)
+    params.permit(:title, :content, :user_id, :published).merge(user_id: current_user.id)
   end
 end

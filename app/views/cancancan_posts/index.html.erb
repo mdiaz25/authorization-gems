@@ -1,13 +1,20 @@
 <h1>Posts</h1>
-<%= link_to 'Create new post', new_cancancan_post_path %>
+<%= render 'cancancan_posts/form', post: nil %>
 <ul>
   <% @posts.each do |post| %>
       <li>
         <h2><%= post.title %></h2>
         <%= post.content %>
-        <% debugger %>
-        <%= form_with url: cancancan_post_path(post), method: :delete do |form| %>
-          <%= form.submit 'Destroy' %>
+        <br>
+        <%= "Published: #{post.published}" %>
+        <br>
+        <% if can? :destroy, post %>
+          <%= link_to "Destroy", cancancan_post_path(post), data:
+            { turbo_method: :delete,
+              turbo_confirm: "Are you sure?" } %>
+        <% end %>
+        <% if can? :update, post %>
+            <%= link_to 'Update post', edit_cancancan_post_path(post) %>
         <% end %>
       </li>
   <% end %>

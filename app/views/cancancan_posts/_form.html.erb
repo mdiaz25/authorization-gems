@@ -1,6 +1,4 @@
-<h1>New Post</h1>
-
-<%= form_with url: cancancan_posts_path  do |form| %>
+<%= form_with url: cancancan_posts_path, model: post  do |form| %>
   <div>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
@@ -10,6 +8,12 @@
     <%= form.label :content %><br>
     <%= form.text_area :content %><br>
   </div>
+
+  <div>
+    <%= form.label :published %><br>
+    <%= form.check_box :published, value: true  %><br>
+  </div>
+
 
   <div>
     <%= form.submit %>
