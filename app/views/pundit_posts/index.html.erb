@@ -1,13 +1,15 @@
-<%= render 'form', post: Post.new %>
-<% @posts.each do |post| %>
-  <turbo-frame id=<%= post.id %>>
-    <b><p><%= post.title %></p></b>
-    <p><%= post.content%></p>
-    <% if policy(post).update? %>
-      <%= link_to "Edit", edit_pundit_post_path(post) %>
-    <% end %>
-    <% if policy(post).destroy? %>
-      <%= link_to 'delete', pundit_post_path(post), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
-    <% end %>
-  </turbo-frame>
-<% end %>
+<div class='container'>
+  <%= render 'form', post: Post.new %>
+  <% @posts.each do |post| %>
+    <turbo-frame id=<%= post.id %>>
+      <b><p><%= post.title %></p></b>
+      <p><%= post.content%></p>
+      <% if policy(post).update? %>
+        <%= link_to "Edit", edit_pundit_post_path(post) %>
+      <% end %>
+      <% if policy(post).destroy? %>
+        <%= link_to 'delete', pundit_post_path(post), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+      <% end %>
+    </turbo-frame>
+  <% end %>
+</div>
