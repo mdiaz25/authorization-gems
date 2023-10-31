@@ -1,22 +1,11 @@
-<%= form_with url: cancancan_posts_path, model: post  do |form| %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :content %><br>
-    <%= form.text_area :content %><br>
-  </div>
-
+<%= form_with model: [:cancancan, post] do |form| %>
+  <p><%= 'Title' %></p>
+  <%= form.text_field :title %>
+  <p><%= 'Content' %></p>
+  <%= form.text_area :content %>
   <div>
     <%= form.label :published %><br>
     <%= form.check_box :published, value: true  %><br>
   </div>
-
-
-  <div>
-    <%= form.submit %>
-  </div>
+  <%= form.submit %>
 <% end %>
-

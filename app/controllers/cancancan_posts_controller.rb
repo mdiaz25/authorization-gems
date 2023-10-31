@@ -14,20 +14,28 @@ class CancancanPostsController < ApplicationController
   end
 
   def update
-    debugger
-    @post.update(post_params)
-    redirect_to cancancan_posts_path
+    if @post.update(update_params)
+      redirect_to cancancan_posts_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    @post.destroy
+    if @post.destroy
+      redirect_to pundit_posts_path
+    else
 
-    redirect_to cancancan_posts_path
+    end
   end
 
   private
 
   def post_params
-    params.permit(:title, :content, :user_id, :published).merge(user_id: current_user.id)
+    params.permit(:title, :content, :published).merge(user_id: current_user.id)
+  end
+
+  def update_params
+    params.permit(:title, :content, :published)
   end
 end

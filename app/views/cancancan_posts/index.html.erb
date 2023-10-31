@@ -1,21 +1,16 @@
-<h1>Posts</h1>
-<%= render 'cancancan_posts/form', post: nil %>
-<ul>
-  <% @posts.each do |post| %>
-      <li>
-        <h2><%= post.title %></h2>
-        <%= post.content %>
-        <br>
-        <%= "Published: #{post.published}" %>
-        <br>
-        <% if can? :destroy, post %>
-          <%= link_to "Destroy", cancancan_post_path(post), data:
-            { turbo_method: :delete,
-              turbo_confirm: "Are you sure?" } %>
-        <% end %>
-        <% if can? :update, post %>
-            <%= link_to 'Update post', edit_cancancan_post_path(post) %>
-        <% end %>
-      </li>
-  <% end %>
-</ul>
+<%= render 'form', post: Post.new %>
+<% @posts.each do |post| %>
+  <turbo-frame id=<%= post.id %>>
+    <b><p><%= post.title %></p></b>
+    <p><%= post.content%></p>
+    <%= "Published: #{post.published}" %>
+    <br>
+    <% if can? :update, post %>
+      <%= link_to "Edit", edit_pundit_post_path(post) %>
+    <% end %>
+    <% if can? :destroy, post %>
+      <%= link_to 'delete', pundit_post_path(post), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+    <% end %>
+  </turbo-frame>
+<% end %>
+
