@@ -1,0 +1,7 @@
+<%= form_with model: [:pundit, post] do |form| %>
+  <p><%= 'Title' %></p>
+  <%= form.text_field :title %>
+  <p><%= 'Content' %></p>
+  <%= form.text_area :content %>
+  <%= form.submit %>
+<% end %>
