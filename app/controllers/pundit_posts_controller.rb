@@ -7,11 +7,8 @@ class PunditPostsController < ApplicationController
 
   def update
     authorize post
-    if post.update(create_params)
-      redirect_to pundit_posts_path
-    else
-      render json: { errors: post.errors.full_messages }, status: :unprocessable_entity
-    end
+    post.update(create_params)
+    redirect_to pundit_posts_path
   end
 
   def edit
@@ -21,21 +18,15 @@ class PunditPostsController < ApplicationController
   def create
     post = Post.new(create_params)
     authorize post
-    if post.save
-      redirect_to pundit_posts_path
-    else
-      render json: { errors: post.errors.full_messages }, status: :unprocessable_entity
-    end
+    post.save
+    redirect_to pundit_posts_path
   end
 
   def destroy
     post = Post.find(params[:id])
     authorize post
-    if post.destroy
-      redirect_to pundit_posts_path
-    else
-      render json: { errors: post.errors.full_messages }, status: :unprocessable_entity
-    end
+    post.destroy
+    redirect_to pundit_posts_path
   end
 
   private
