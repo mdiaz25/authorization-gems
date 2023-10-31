@@ -1,6 +1,5 @@
 class PunditPostsController < ApplicationController
   include Pundit::Authorization
-  before_action :authenticate_user!
 
   def index
     @posts = policy_scope(Post)
@@ -21,6 +20,7 @@ class PunditPostsController < ApplicationController
 
   def create
     post = Post.new(create_params)
+    authorize post
     if post.save
       redirect_to pundit_posts_path
     else
@@ -30,6 +30,7 @@ class PunditPostsController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
+    authorize post
     if post.destroy
       redirect_to pundit_posts_path
     else
