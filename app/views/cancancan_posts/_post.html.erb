@@ -1,0 +1,16 @@
+<turbo-frame id=<%= post.id %> class="post">
+  <h3>
+    <%= post.title %>
+    <% unless post.published %>
+      <span><em> (draft)</em></span>
+    <% end %>
+  </h3>
+  <p><%= post.content%></p>
+  <br>
+  <% if can? :update, post %>
+    <%= link_to "Edit", edit_cancancan_post_path(post) %>
+  <% end %>
+  <% if can? :destroy, post %>
+    <%= link_to 'Delete', cancancan_post_path(post), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+  <% end %>
+</turbo-frame>

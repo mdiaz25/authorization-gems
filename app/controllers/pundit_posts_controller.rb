@@ -43,7 +43,7 @@ class PunditPostsController < ApplicationController
   private
 
   def create_params
-    params.require(:post).permit(:title, :content).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :content, :published).merge(user_id: current_user.id)
   end
 
   def update_params
