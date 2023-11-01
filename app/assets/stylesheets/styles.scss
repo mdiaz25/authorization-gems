@@ -1,6 +1,121 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+// Colors
+$darkest_blue: #001233;
+$darker_blue: #002855;
+$base_blue: #023e7d;
+$lighter_blue: #0353a4;
+$white-ish: #f8f9fa;
+$grey: #33415c;
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: $darkest_blue;
+}
 .container {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 45%;
+  box-sizing: border-box;
+  padding: 16px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#postForm {
+  background: $white-ish;
+  padding: 16px;
+  width: 400px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+#postForm > h2 {
+  font-size: 20px;
+}
+
+h3 > span {
+  font-size: 16px;
+  color: $grey;
+  margin-bottom: 4px;
+}
+
+.formItem {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+#postsContainer {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.post {
+  width: 100%;
+  background: $white-ish;
+  border-radius: 4px;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+input, textarea {
+  border-radius: 4px;
+  margin-top: 4px;
+  border: 1px solid $darkest_blue;
+  font-family: "Roboto", sans-serif;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border: 1px solid $darker_blue;
+}
+
+input:hover:not(:focus), textarea:hover:not(:focus) {
+  border: 1.3px solid $lighter_blue;
+}
+
+input:not([type='checkbox']) {
+  height: 32px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+textarea {
+  min-height: 80px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.submitDiv {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 100%;
+}
+
+input[type="submit"] {
+  background: $base_blue;
+  border-radius: 4px;
+  border: 1px solid $base_blue;
+  outline: none;
+  color: white;
+}
+
+input[type="submit"]:hover {
+  background: $darker_blue;
+  border: 1px solid $darker_blue;
+  outline: none;
+  cursor: pointer;
+}
+
+a {
+  color: $lighter_blue;
 }

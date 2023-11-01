@@ -1,16 +1,10 @@
-<%= render 'form', post: Post.new %>
-<% @posts.each do |post| %>
-  <turbo-frame id=<%= post.id %>>
-    <b><p><%= post.title %></p></b>
-    <p><%= post.content%></p>
-    <%= "Published: #{post.published}" %>
-    <br>
-    <% if can? :update, post %>
-      <%= link_to "Edit", edit_pundit_post_path(post) %>
+<div class='container'>
+  <%= render 'form', post: Post.new,  is_new: true %>
+  <h2>Posts</h2>
+  <div id="postsContainer">
+    <% @posts.each do |post| %>
+      <%= render 'post', post: post %>
     <% end %>
-    <% if can? :destroy, post %>
-      <%= link_to 'delete', pundit_post_path(post), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
-    <% end %>
-  </turbo-frame>
-<% end %>
+  </div>
+</div>
 

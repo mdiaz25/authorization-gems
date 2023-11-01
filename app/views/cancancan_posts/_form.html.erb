@@ -1,11 +1,21 @@
-<%= form_with model: [:cancancan, post] do |form| %>
-  <p><%= 'Title' %></p>
-  <%= form.text_field :title %>
-  <p><%= 'Content' %></p>
-  <%= form.text_area :content %>
-  <div>
-    <%= form.label :published %><br>
-    <%= form.check_box :published, value: true  %><br>
+<%= form_with model: [:cancancan, post], id: 'postForm' do |form| %>
+  <% if is_new %>
+    <h2>New Post</h2>
+  <% end %>
+  <div class="formItem">
+    <%= form.label 'Title' %>
+    <%= form.text_field :title %>
   </div>
-  <%= form.submit %>
+  <div class="formItem">
+    <%= form.label 'Content' %>
+    <%= form.text_area :content %>
+  </div>
+  <div class="checkbox-wrapper-1">
+    <%= form.label :published %>
+    <%= form.check_box :published, value: true, input_html: { id: "example-1", class: "substituted" } %><br>
+  </div>
+  <div class="submitDiv">
+    <%= form.submit  %>
+    <!-- TODO: cancel option ----->
+  </div>
 <% end %>

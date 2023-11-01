@@ -23,7 +23,7 @@ class CancancanPostsController < ApplicationController
 
   def destroy
     if @post.destroy
-      redirect_to pundit_posts_path
+      redirect_to cancancan_posts_path
     else
 
     end
@@ -32,10 +32,10 @@ class CancancanPostsController < ApplicationController
   private
 
   def post_params
-    params.permit(:title, :content, :published).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :content, :published).merge(user_id: current_user.id)
   end
 
   def update_params
-    params.permit(:title, :content, :published)
+    params.require(:post).permit(:title, :content, :published)
   end
 end
