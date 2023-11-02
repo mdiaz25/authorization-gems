@@ -10,12 +10,10 @@
     <%= form.label 'Content' %>
     <%= form.text_area :content %>
   </div>
-  <div class="checkbox-wrapper-1">
-    <%= form.label :published %>
-    <%= form.check_box :published, value: true, input_html: { id: "example-1", class: "substituted" } %><br>
-  </div>
-  <div class="submitDiv">
-    <%= form.submit  %>
+  <div class='buttonsContainer'>
+    <%= form.submit name: 'draft', value: 'Create Draft', class: "secondaryButton" %>
+    <!-- TODO: cancel option ----->
+    <%= form.submit class: "primaryButton"  %>
     <!-- TODO: cancel option ----->
   </div>
 <% end %>

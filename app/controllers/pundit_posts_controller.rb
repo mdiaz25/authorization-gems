@@ -21,6 +21,7 @@ class PunditPostsController < ApplicationController
   end
 
   def create
+    debugger
     post = Post.new(create_params)
     authorize post
     if post.save
@@ -43,7 +44,7 @@ class PunditPostsController < ApplicationController
   private
 
   def create_params
-    params.require(:post).permit(:title, :content, :published).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :content, :published).merge(user_id: current_user.id, published: !params[:draft].present?)
   end
 
   def update_params

@@ -13,8 +13,8 @@ body {
   color: $darkest_blue;
 }
 .container {
+  background-color: $white-ish;
   width: 100%;
-  max-width: 1200px;
   box-sizing: border-box;
   padding: 16px 64px;
   display: flex;
@@ -24,9 +24,9 @@ body {
 }
 
 #postForm {
-  background: $white-ish;
+  background: white;
   padding: 16px;
-  width: 400px;
+  width: 40%;
   box-sizing: border-box;
   border-radius: 4px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -49,7 +49,7 @@ h3 > span {
 }
 
 #postsContainer {
-  width: 400px;
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,16 +59,20 @@ h3 > span {
 
 .post {
   width: 100%;
-  background: $white-ish;
+  background: white;
   border-radius: 4px;
   padding: 8px 16px;
   box-sizing: border-box;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
+.formContainer {
+  background-color: red;
+}
+
 input, textarea {
   border-radius: 4px;
-  margin-top: 4px;
+  margin: 5px;
   border: 1px solid $darkest_blue;
   font-family: "Roboto", sans-serif;
 }
@@ -94,19 +98,27 @@ textarea {
   box-sizing: border-box;
 }
 
-.submitDiv {
+.primaryButton {
   display: flex;
   flex-direction: row-reverse;
-  justify-content: space-between;
-  width: 100%;
-}
+  margin: 5px;
 
-input[type="submit"] {
   background: $base_blue;
   border-radius: 4px;
   border: 1px solid $base_blue;
   outline: none;
   color: white;
+}
+
+.secondaryButton {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 5px;
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid $base_blue;
+  outline: none;
+  color: $base_blue;
 }
 
 input[type="submit"]:hover {
@@ -118,4 +130,20 @@ input[type="submit"]:hover {
 
 a {
   color: $lighter_blue;
+  text-decoration: none;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.postButtonsContainer {
+  float: right;
+}
+
+.actionButton {
+  padding: 2px;
 }
