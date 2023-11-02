@@ -12,7 +12,7 @@ body {
   font-family: "Roboto", sans-serif;
   color: $darkest_blue;
 }
-.container {
+.mainContainer {
   background-color: $white-ish;
   width: 100%;
   box-sizing: border-box;
@@ -26,7 +26,7 @@ body {
 #postForm {
   background: white;
   padding: 16px;
-  width: 40%;
+  width: 100%;
   box-sizing: border-box;
   border-radius: 4px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -49,7 +49,6 @@ h3 > span {
 }
 
 #postsContainer {
-  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -131,6 +130,10 @@ input[type="submit"]:hover {
 a {
   color: $lighter_blue;
   text-decoration: none;
+  padding: 8px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 13.3333px;
 }
 
 .buttonsContainer {
@@ -146,4 +149,8 @@ a {
 
 .actionButton {
   padding: 2px;
+}
+
+.postsContainer {
+  width: 50%;
 }

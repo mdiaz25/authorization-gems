@@ -20,8 +20,11 @@ class PunditPostsController < ApplicationController
     authorize post
   end
 
+  def show
+    authorize post
+  end
+
   def create
-    debugger
     post = Post.new(create_params)
     authorize post
     if post.save

@@ -11,9 +11,12 @@
     <%= form.text_area :content %>
   </div>
   <div class='buttonsContainer'>
-    <%= form.submit name: 'draft', value: 'Create Draft', class: "secondaryButton" %>
-    <!-- TODO: cancel option ----->
-    <%= form.submit class: "primaryButton"  %>
-    <!-- TODO: cancel option ----->
+    <% if is_new %>
+      <%= form.submit name: 'draft', value: 'Create Draft', class: "secondaryButton" %>
+    <% else %>
+      <%= link_to 'Cancel', pundit_post_path(post), class: 'secondaryButton' %>
+    <% end %>
+    <% submit_name = is_new ? 'Create Post' : ( post.published? ? 'Update Post' : 'Publish Post') %>
+    <%= form.submit value: submit_name, class: "primaryButton"  %>
   </div>
 <% end %>

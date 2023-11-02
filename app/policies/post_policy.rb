@@ -28,4 +28,10 @@ class PostPolicy < ApplicationPolicy
   def create?
     user.admin? || record.user_id == user.id
   end
+
+  def show?
+    return true if user.admin?
+
+    record.published? || record.user_id == user.id
+  end
 end
