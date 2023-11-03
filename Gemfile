@@ -45,6 +45,7 @@ gem "bootsnap", require: false
 gem 'pundit'
 gem 'cancancan'
 gem 'devise', github: 'heartcombo/devise', branch: 'main'
+gem 'font-awesome-rails'
 
 # Use Sass to process CSS
 gem "sassc-rails"

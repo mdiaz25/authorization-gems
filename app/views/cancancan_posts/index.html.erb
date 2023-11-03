@@ -1,10 +1,11 @@
-<div class='container'>
-  <%= render 'form', post: Post.new,  is_new: true %>
-  <h2>Posts</h2>
-  <div id="postsContainer">
-    <% @posts.each do |post| %>
-      <%= render 'post', post: post %>
-    <% end %>
+<div class='mainContainer'>
+  <div class='postsContainer'>
+    <%= render 'form', post: Post.new,  is_new: true %>
+    <h2>Posts</h2>
+    <div id="postsContainer">
+      <% @posts.reverse.each do |post| %>
+        <%= render 'post', post: post %>
+      <% end %>
+    </div>
   </div>
 </div>
-

@@ -10,12 +10,13 @@
     <%= form.label 'Content' %>
     <%= form.text_area :content %>
   </div>
-  <div class="checkbox-wrapper-1">
-    <%= form.label :published %>
-    <%= form.check_box :published, value: true, input_html: { id: "example-1", class: "substituted" } %><br>
-  </div>
-  <div class="submitDiv">
-    <%= form.submit  %>
-    <!-- TODO: cancel option ----->
+  <div class='buttonsContainer'>
+    <% if is_new %>
+      <%= form.submit name: 'draft', value: 'Create Draft', class: "secondaryButton" %>
+    <% else %>
+      <%= link_to 'Cancel', pundit_post_path(post), class: 'secondaryButton' %>
+    <% end %>
+    <% submit_name = is_new ? 'Create Post' : ( post.published? ? 'Update Post' : 'Publish Post') %>
+    <%= form.submit value: submit_name, class: "primaryButton"  %>
   </div>
 <% end %>

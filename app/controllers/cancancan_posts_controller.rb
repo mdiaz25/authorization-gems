@@ -32,10 +32,10 @@ class CancancanPostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :published).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :content).merge(user_id: current_user.id, published: !params[:draft].present?)
   end
 
   def update_params
-    params.require(:post).permit(:title, :content, :published)
+    params.require(:post).permit(:title, :content).merge(published: true)
   end
 end
