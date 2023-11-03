@@ -7,6 +7,7 @@ $base_blue: #023e7d;
 $lighter_blue: #0353a4;
 $white-ish: #f8f9fa;
 $grey: #33415c;
+$light-grey: #1755FF;
 
 body {
   font-family: "Roboto", sans-serif;
@@ -121,10 +122,11 @@ textarea {
 }
 
 input[type="submit"]:hover {
-  background: $darker_blue;
-  border: 1px solid $darker_blue;
+  background: $darkest_blue;
+  border: 1px solid $darkest_blue;
   outline: none;
   cursor: pointer;
+  color: white;
 }
 
 a {
