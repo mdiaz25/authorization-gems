@@ -1,24 +1,14 @@
 class CancancanPostsController < ApplicationController
   load_and_authorize_resource class: Post, instance_name: :post, param_method: :post_params
 
-  def index
-    # @index
-  end
-
   def create
-    if @post.save
-      redirect_to cancancan_posts_path
-    else
-      render :new, status: :unprocessable_entity
-    end
+    @post.save
+    redirect_to cancancan_posts_path
   end
 
   def update
-    if @post.update(update_params)
-      redirect_to cancancan_posts_path
-    else
-      render :edit, status: :unprocessable_entity
-    end
+    @post.update(update_params)
+    redirect_to cancancan_posts_path
   end
 
   def destroy
