@@ -9,7 +9,7 @@ class PunditPostsController < ApplicationController
 
   def update
     authorize post
-    if post.update(create_params)
+    if post.update(update_params)
       redirect_to pundit_posts_path
     else
       render json: { errors: post.errors.full_messages }, status: :unprocessable_entity
@@ -51,7 +51,7 @@ class PunditPostsController < ApplicationController
   end
 
   def update_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content).merge(published: true)
   end
 
   def post
