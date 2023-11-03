@@ -22,11 +22,8 @@ class CancancanPostsController < ApplicationController
   end
 
   def destroy
-    if @post.destroy
-      redirect_to cancancan_posts_path
-    else
-
-    end
+    @post.destroy
+    redirect_to cancancan_posts_path
   end
 
   private

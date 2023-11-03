@@ -22,6 +22,8 @@ class PostPolicy < ApplicationPolicy
   end
 
   def destroy?
+    return if user.admin?
+
     record.user_id == user.id
   end
 

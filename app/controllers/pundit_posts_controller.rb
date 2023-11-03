@@ -7,9 +7,14 @@ class PunditPostsController < ApplicationController
     @posts = policy_scope(Post)
   end
 
-  def update
+  def show
     authorize post
-    if post.update(update_params)
+  end
+
+  def create
+    post = Post.new(create_params)
+    authorize post
+    if post.save
       redirect_to pundit_posts_path
     else
       render json: { errors: post.errors.full_messages }, status: :unprocessable_entity
@@ -20,14 +25,9 @@ class PunditPostsController < ApplicationController
     authorize post
   end
 
-  def show
+  def update
     authorize post
-  end
-
-  def create
-    post = Post.new(create_params)
-    authorize post
-    if post.save
+    if post.update(update_params)
       redirect_to pundit_posts_path
     else
       render json: { errors: post.errors.full_messages }, status: :unprocessable_entity
